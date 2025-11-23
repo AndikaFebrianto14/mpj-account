@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\ChartOfAccount;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CashFlowExport;
 
 class CashFlowController extends Controller
 {
-    public function index(Request $request)
+    // Fungsi utama untuk ambil data Cash Flow (dipakai index, PDF, Excel)
+    public static function generateData(Request $request)
     {
         $startDate = $request->start_date;
         $endDate   = $request->end_date;
 
-        // ambil akun kas & setara kas
         $cashAccounts = ChartOfAccount::with('details.journal', 'category')
             ->whereHas('category', function ($q) {
                 $q->where('category_type', 'Asset')
@@ -56,14 +59,30 @@ class CashFlowController extends Controller
 
         $netCash = $totalIn - $totalOut;
 
-        return view('cashflow.index', compact(
-            'cashIn',
-            'cashOut',
-            'totalIn',
-            'totalOut',
-            'netCash',
-            'startDate',
-            'endDate'
-        ));
+        return compact('cashIn', 'cashOut', 'totalIn', 'totalOut', 'netCash', 'startDate', 'endDate');
+    }
+
+    // Halaman utama
+    public function index(Request $request)
+    {
+        $data = $this->generateData($request);
+        return view('cashflow.index', $data);
+    }
+
+    // Export PDF
+    public function exportPdf(Request $request)
+    {
+        $data = $this->generateData($request);
+        $pdf = PDF::loadView('cashflow.pdf', $data)->setPaper('A4', 'portrait');
+        return $pdf->stream("CashFlow-{$data['startDate']}-to-{$data['endDate']}.pdf");
+    }
+
+    // Export Excel
+    public function exportExcel(Request $request)
+    {
+        return Excel::download(
+            new CashFlowExport($request),
+            "CashFlow-{$request->start_date}-to-{$request->end_date}.xlsx"
+        );
     }
 }

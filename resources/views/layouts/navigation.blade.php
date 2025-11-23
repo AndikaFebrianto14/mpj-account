@@ -6,7 +6,15 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <!-- Your updated custom SVG logo -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 200 150" class="shrink-0">
+                            <rect width="100%" height="100%" fill="transparent" />
+                            <text x="20" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="80" fill="#3498DB">M</text>
+                            <text x="75" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="80" fill="#3498DB">P</text>
+                            <text x="130" y="100" font-family="Arial, sans-serif" font-weight="bold" font-size="80" fill="#3498DB">J</text>
+                            <path d="M10,70 L30,60 L50,65 L70,50 L90,80 L110,40 L130,60 L150,45" fill="none" stroke="#ff0000ff" stroke-width="4" />
+                            <line x1="10" y1="120" x2="190" y2="120" stroke="#ff0000ff" stroke-width="3" />
+                        </svg>
                     </a>
                 </div>
 

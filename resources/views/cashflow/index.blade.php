@@ -53,12 +53,13 @@
                     <p class="text-muted">Track cash inflows and outflows for the selected period</p>
                 </div>
                 <div class="d-flex">
-                    <button class="btn btn-outline-secondary me-2">
-                        <i class="bi bi-download me-1"></i> Export
-                    </button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-printer me-1"></i> Print
-                    </button>
+                    <a href="{{ route('cashflow.exportExcel', ['start_date'=>$startDate,'end_date'=>$endDate]) }}" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-download me-1"></i> Export Excel
+                    </a>
+
+                    <a href="{{ route('cashflow.exportPdf', ['start_date'=>$startDate,'end_date'=>$endDate]) }}" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-printer me-1"></i> Print PDF
+                    </a>
                 </div>
             </div>
 
@@ -345,6 +346,5 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </x-app-layout>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

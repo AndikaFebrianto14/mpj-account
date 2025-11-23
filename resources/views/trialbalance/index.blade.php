@@ -1,4 +1,8 @@
     <x-app-layout>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
         <div class="container py-4">
             <!-- Header Section -->
             <div class="d-flex justify-content-between align-items-center mb-4">
@@ -7,13 +11,33 @@
                     <p class="text-muted">Financial summary between selected dates</p>
                 </div>
                 <div class="d-flex">
-                    <button class="btn btn-outline-secondary me-2">
-                        <i class="bi bi-download me-1"></i> Export
-                    </button>
-                    <button class="btn btn-primary">
+                    <div class="dropdown me-2">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="bi bi-download me-1"></i> Export
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('trialbalance.export.pdf', ['start_date' => $startDate, 'end_date' => $endDate]) }}">
+                                    <i class="bi bi-file-earmark-pdf me-1 text-danger"></i> Export PDF
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('trialbalance.export.excel', ['start_date' => $startDate, 'end_date' => $endDate]) }}">
+                                    <i class="bi bi-file-earmark-excel me-1 text-success"></i> Export Excel
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a class="btn btn-primary"
+                        href="{{ route('trialbalance.print', ['start_date' => $startDate, 'end_date' => $endDate]) }}"
+                        target="_blank">
                         <i class="bi bi-printer me-1"></i> Print
-                    </button>
+                    </a>
                 </div>
+
             </div>
 
             <!-- Filter Card -->

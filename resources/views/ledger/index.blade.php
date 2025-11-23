@@ -105,10 +105,25 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-light d-flex justify-content-between align-items-center">
                     <h5 class="mb-0"><i class="bi bi-table me-2"></i>Transaction Details</h5>
-                    <!-- <button class="btn btn-sm btn-outline-primary">
-                        <i class="bi bi-download me-1"></i> Export
-                    </button> -->
+
+                    <div>
+                        <a href="{{ route('ledger.print', request()->query()) }}"
+                            class="btn btn-sm btn-outline-secondary me-2" target="_blank">
+                            <i class="bi bi-printer me-1"></i> Print
+                        </a>
+
+                        <a href="{{ route('ledger.export.excel', request()->query()) }}"
+                            class="btn btn-sm btn-outline-success me-2">
+                            <i class="bi bi-file-earmark-spreadsheet me-1"></i> Excel
+                        </a>
+
+                        <a href="{{ route('ledger.export.pdf', request()->query()) }}"
+                            class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-file-earmark-pdf me-1"></i> PDF
+                        </a>
+                    </div>
                 </div>
+
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">

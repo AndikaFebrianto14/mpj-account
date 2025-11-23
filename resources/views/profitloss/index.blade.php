@@ -7,13 +7,14 @@
                     <p class="text-muted">Financial performance for the selected period</p>
                 </div>
                 <div class="d-flex">
-                    <button class="btn btn-outline-secondary me-2">
-                        <i class="bi bi-download me-1"></i> Export
-                    </button>
-                    <button class="btn btn-primary">
-                        <i class="bi bi-printer me-1"></i> Print
-                    </button>
+                    <a href="{{ route('profitloss.exportExcel', ['start_date' => $startDate, 'end_date' => $endDate]) }}" class="btn btn-outline-success me-2">
+                        <i class="bi bi-file-earmark-excel me-1"></i> Export Excel
+                    </a>
+                    <a href="{{ route('profitloss.exportPdf', ['start_date' => $startDate, 'end_date' => $endDate]) }}" class="btn btn-primary">
+                        <i class="bi bi-printer me-1"></i> Export PDF
+                    </a>
                 </div>
+
             </div>
 
             <!-- Filter Card -->

@@ -5,16 +5,16 @@
                     <div class="card">
                         <div class="card-header">
                             <h2 class="h4 mb-0"><i class="bi bi-person-plus me-2"></i>Edit User</h2>
-                            <p class="mb-0 opacity-75">Isi form berikut untuk mengedit informasi user</p>
+                            <p class="mb-0 opacity-75">Fill out the form below to edit user information</p>
                         </div>
                         <div class="card-body p-4">
                             <form method="POST" action="{{ route('users.update', $user->id) }}">
                                 @csrf @method('PUT')
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">Nama Lengkap</label>
+                                    <label for="name" class="form-label">Full Name</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                        <input type="text" id="name" name="name" value="{{ $user->name }}" class="form-control" required placeholder="Masukkan nama lengkap">
+                                        <input type="text" id="name" name="name" value="{{ $user->name }}" class="form-control" required placeholder="Enter full name">
                                     </div>
                                 </div>
 
@@ -22,7 +22,7 @@
                                     <label for="email" class="form-label">Email</label>
                                     <div class="input-group">
                                         <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                        <input type="email" id="email" name="email" value="{{ $user->email }}" class="form-control" required placeholder="Masukkan alamat email">
+                                        <input type="email" id="email" name="email" value="{{ $user->email }}" class="form-control" required placeholder="Enter email address">
                                     </div>
                                 </div>
 
@@ -30,7 +30,7 @@
                                     <label for="password" class="form-label">New Password (optional)</label>
                                     <div class="input-group password-container">
                                         <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                        <input type="password" id="password" name="password" class="form-control" placeholder="Buat password yang kuat">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Create a strong password">
                                         <span class="password-toggle mx-2 py-2" onclick="togglePassword('password')">
                                             <i class="bi bi-eye"></i>
                                         </span>
@@ -38,10 +38,10 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+                                    <label for="password_confirmation" class="form-label">Confirm Password</label>
                                     <div class="input-group password-container">
                                         <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Ulangi password yang sama">
+                                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Repeat the same password">
                                         <span class="password-toggle mx-2 py-2" onclick="togglePassword('password_confirmation')">
                                             <i class="bi bi-eye"></i>
                                         </span>
@@ -64,7 +64,7 @@
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="{{ route('users.index') }}" class="btn btn-secondary">
-                                        <i class="bi bi-arrow-left me-1"></i> Kembali
+                                        <i class="bi bi-arrow-left me-1"></i> Back
                                     </a>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="bi bi-check-lg me-1"></i> Update User
